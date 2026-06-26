@@ -23,7 +23,7 @@ export default function Login({ onLogin }: { onLogin: (u: User) => void }) {
               <div className="tt">{u.desc}</div>
             </span>
             <span className={"badge " + (u.role === "executive" ? "exec" : "admin")}>
-              {u.role === "executive" ? "본부장" : "관리자"}
+              {u.role === "executive" ? (u.name === "이길노" ? "HR담당" : "본부장") : "관리자"}
             </span>
           </button>
         ))}

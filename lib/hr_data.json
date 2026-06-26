@@ -8,11 +8,6 @@
       "code": "HS_HR",
       "name": "HS HR",
       "head": "이길노"
-    },
-    {
-      "code": "RND",
-      "name": "연구개발본부",
-      "head": "최연구"
     }
   ],
   "teams": [
@@ -63,14 +58,6 @@
       "division": null,
       "title": "HR 시스템 관리자",
       "desc": "데이터 업로드/권한 관리. 개별 본부 데이터 조회 불가"
-    },
-    {
-      "id": "u_choi",
-      "name": "최연구",
-      "role": "executive",
-      "division": "RND",
-      "title": "연구개발본부장",
-      "desc": "연구개발본부 데이터 열람"
     }
   ],
   "employees": [
