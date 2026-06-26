@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend,
 } from "recharts";
@@ -22,6 +23,7 @@ function Section({ id, title, pill, highlight, children }: {
 }
 
 export default function Dashboard({ data, highlight }: { data: ScopedData; highlight: string | null }) {
+  const [view, setView] = useState<"main" | "personnel">("main");
   const emp = data.employees;
   const riskHigh = emp.filter((e) => e.retention_risk === "높음");
   const totalBudget = data.budget.reduce((s, x) => s + x.budget_manwon, 0);
@@ -53,11 +55,30 @@ export default function Dashboard({ data, highlight }: { data: ScopedData; highl
     전사: data.company_age_pct[k] ?? 0,
   }));
 
+  if (view === "personnel") {
+    return (
+      <div className="personnel-view" style={{ padding: 8 }}>
+        <button onClick={() => setView("main")} style={{ marginBottom: 16, cursor: "pointer", background: "none", border: "none", color: ACCENT, fontWeight: "bold", fontSize: 14 }}>
+          ← 대시보드로 돌아가기
+        </button>
+        <Section id="personnel-detail" title="인원현황 상세" highlight={null}>
+          <div className="empty" style={{ padding: "60px 0" }}>
+            ※ 향후 Data 적재 시 ORG2(조직별/팀별) 구분에 따른 인원현황이 표시될 예정입니다.
+          </div>
+        </Section>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="kpi-grid">
-        <div className={"kpi" + (highlight === "retention" ? " flash" : "")}>
-          <div className="label">소속 인원</div>
+        <div 
+          className={"kpi" + (highlight === "retention" ? " flash" : "")} 
+          onClick={() => setView("personnel")}
+          style={{ cursor: "pointer" }}
+        >
+          <div className="label">인원현황 <span style={{ fontSize: 11, color: ACCENT, float: "right" }}>상세 ➔</span></div>
           <div className="value">{emp.length}<span style={{ fontSize: 14 }}>명</span></div>
           <div className="delta up">퇴사위험 높음 {riskHigh.length}명</div>
         </div>
