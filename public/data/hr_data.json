@@ -18,11 +18,6 @@
       "code": "RND",
       "name": "연구개발본부",
       "head": "최연구"
-    },
-    {
-      "code": "SCM",
-      "name": "공급망관리본부",
-      "head": "정물류"
     }
   ],
   "teams": [
@@ -89,14 +84,6 @@
       "division": "RND",
       "title": "연구개발본부장",
       "desc": "연구개발본부 데이터 열람"
-    },
-    {
-      "id": "u_jung",
-      "name": "정물류",
-      "role": "executive",
-      "division": "SCM",
-      "title": "공급망관리본부장",
-      "desc": "공급망관리본부 데이터 열람"
     }
   ],
   "employees": [
